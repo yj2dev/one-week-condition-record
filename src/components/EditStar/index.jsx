@@ -58,9 +58,12 @@ const EditStar = ({ condition, setCondition }) => {
       <section className="edit-star">
         {[...new Array(5)].map((item, index) =>
           condition?.rate > index ? (
-            <FaStarIcon onClick={() => onChangeStar(index + 1)} />
+            <FaStarIcon key={index} onClick={() => onChangeStar(index + 1)} />
           ) : (
-            <FaRegStarIcon onClick={() => onChangeStar(index + 1)} />
+            <FaRegStarIcon
+              key={index}
+              onClick={() => onChangeStar(index + 1)}
+            />
           ),
         )}
       </section>
