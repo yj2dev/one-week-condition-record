@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   margin: 24px;
   padding: 24px 24px 48px 24px;
-  box-shadow: 4px 4px 12px #5f5f5f;
+  box-shadow: 2px 2px 8px #7b7b7b;
 
   h1 {
     text-align: center;

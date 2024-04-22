@@ -3,7 +3,7 @@ export const isToday = (targetDate) => {
        설명: 오늘의 날짜와 일치하는지 비교해주는 함수(시, 분, 초를 제외한 년, 월, 일만 비교)
        매개변수: targetDate(비교할 날짜)
        반환: true(오늘과 일치) or false(오늘이랑 불일치)
-       작성자: 이유진(yj2.dev@gmail.co
+       작성자: 이유진(yj2.dev@gmail.com)
        작성일: 2024.04.22 04:46
    **/
   const now = new Date();
@@ -43,11 +43,13 @@ export const mappedOneWeekList = (originList, day = 0) => {
 
   const after7Date = new Date(nowDate.getTime() + 1000 * 60 * 60 * 24 * 7);
 
-  const filterList = originList.filter((item) => {
-    let date = new Date(item.date);
-    date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    return nowDate <= date && date < after7Date;
-  });
+  const filterList =
+    // originList &&
+    originList.filter((item) => {
+      let date = new Date(item.date);
+      date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      return nowDate <= date && date < after7Date;
+    });
 
   return filterList;
 };

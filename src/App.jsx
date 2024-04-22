@@ -2,13 +2,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import UpdatePage from "./pages/UpdatePage";
 import Layout from "./layout";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { getCondition } from "./network/request";
-import { setCondition } from "./redux/slices/conditionSlice";
-import { useDispatch } from "react-redux";
+import { setCondition, updateRate } from "./redux/slices/conditionSlice";
+import { useDispatch, useSelector } from "react-redux";
+import Alert from "./components/Alert";
 
 function App() {
   const dispatch = useDispatch();
+  const alertState = useSelector((state) => state.alertSlice);
 
   const runGetCondition = async (day = 0) => {
     let res = await getCondition();
@@ -21,6 +23,7 @@ function App() {
 
   return (
     <Router>
+      <Alert show={alertState?.show} content={alertState?.content} />
       <Layout>
         <Routes>
           <Route path="/" element={<LandingPage />} />

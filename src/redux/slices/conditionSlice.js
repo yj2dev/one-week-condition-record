@@ -14,7 +14,12 @@ const conditionSlice = createSlice({
     },
     updateRate: (state, action) => {
       const { id, rate } = action.payload;
+
+      console.log("redux");
+      console.log(id, rate);
+
       const index = state.conditionList.findIndex((item) => item.id === id);
+      console.log("index >> ", index);
 
       if (index !== -1) {
         return produce(state, (draft) => {
