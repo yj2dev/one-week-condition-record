@@ -7,12 +7,7 @@ import { hideAlert, showAlert } from "../../redux/slices/alertSlice";
 
 const EditStar = ({ condition, setCondition }) => {
   const dispatch = useDispatch();
-
-  const alertState = useSelector((state) => state.alertSlice);
-
   const timerRef = useRef(null);
-
-  console.log("condition >> ", condition);
 
   const showRateAlert = (message) => {
     if (timerRef.current) {
@@ -26,7 +21,7 @@ const EditStar = ({ condition, setCondition }) => {
   };
 
   const onChangeStar = (index) => {
-    setCondition({ ...condition, rate: index });
+    setCondition((prev) => ({ ...prev, rate: index }));
 
     if (condition.rate !== index) {
       showRateAlert(`${index}점으로 변경되었습니다. 평점을 저장해주세요`);
@@ -35,7 +30,6 @@ const EditStar = ({ condition, setCondition }) => {
 
   const onClickSave = () => {
     const payload = { id: condition.id, rate: condition.rate };
-    console.log("payload >> ", payload);
 
     dispatch(updateRate(payload));
     showRateAlert(
